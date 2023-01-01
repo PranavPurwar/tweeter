@@ -34,23 +34,3 @@ export default function Home({ trendingResults, followResults, providers }) {
     </div>
   );
 }
-
-export async function getServerSideProps(context) {
-  const trendingResults = await fetch(
-    "https://api.npoint.io/e4c062729eeea48124ed"
-  ).then((res) => res.json());
-  const followResults = await fetch(
-    "https://api.npoint.io/a0d72e78f4cc071aaba1"
-  ).then((res) => res.json());
-  const providers = await getProviders();
-  const session = await getSession(context);
-
-  return {
-    props: {
-      trendingResults,
-      followResults,
-      providers,
-      session,
-    },
-  };
-}
